@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #1a0a0a;
+    color: #ffcccc;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* FSOCIETY MATRIX BACKGROUND */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(100,0,0,0.2) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(150,0,0,0.2) 0%, transparent 40%),
+                repeating-linear-gradient(45deg, rgba(139,0,0,0.1) 0px, rgba(139,0,0,0.1) 2px,
+                transparent 2px, transparent 8px);
+    z-index: -2;
+}
+
+.matrix-bg::after {
+    content: "F⚡S⚡O⚡C⚡I⚡E⚡T⚡Y";
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 4rem;
+    color: rgba(180, 0, 0, 0.1);
+    white-space: nowrap;
+    transform: rotate(-5deg);
+    letter-spacing: 10px;
+    text-shadow: 0 0 20px #8b0000;
+    animation: pulse 8s infinite;
+}
+
+.matrix-bg::before {
+    content: "⚡⏣⏣⏣⏣⏣⏣⏣⚡";
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    font-size: 3.5rem;
+    color: rgba(200, 0, 0, 0.1);
+    transform: rotate(10deg);
+    letter-spacing: 15px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.15"><path d="M10 10 L 90 10 L 90 90 L 10 90 Z" fill="none" stroke="%23ff0000" stroke-width="0.5"/><circle cx="50" cy="50" r="40" fill="none" stroke="%238b0000" stroke-width="0.3"/><text x="20" y="30" font-size="12" fill="%23b30000">F</text><text x="70" y="70" font-size="14" fill="%23a30000">S</text></svg>');
+    background-size: 100px 100px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #8b0000;
+    padding-bottom: 20px;
+}
+
+.glitch {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #b30000;
+    text-shadow: 3px 3px 0 #4d0000, 6px 6px 0 #330000;
+    letter-spacing: 5px;
+    animation: glitch 3s infinite;
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff4d4d;
+    animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #660000;
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ff9999;
+    margin-top: 10px;
+    letter-spacing: 3px;
+}
+
+.fsociety-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 25px;
+    background: #2d0a0a;
+    border: 2px solid #b30000;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff4d4d;
+    box-shadow: 0 0 15px #8b0000;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    background: rgba(30, 0, 0, 0.7);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 8px solid #b30000;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 30px rgba(139,0,0,0.3);
+}
+
+.avatar img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #b30000;
+    box-shadow: 0 0 25px #ff0000;
+    object-fit: cover;
+    filter: grayscale(30%);
+}
+
+.description p {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    color: #ffe6e6;
+    position: relative;
+    padding-left: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 3px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.btn.primary {
+    background: #8b0000;
+    color: #fff;
+    box-shadow: 0 0 20px #b30000;
+    border: 1px solid #ff9999;
+}
+
+.btn.secondary {
+    background: transparent;
+    color: #ff9999;
+    border: 2px solid #b30000;
+    box-shadow: 0 0 10px #660000;
+}
+
+.btn.creator {
+    background: #330000;
+    color: #ffb3b3;
+    border: 2px solid #ff4d4d;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #ff4d4d;
+    background: #b30000;
+    color: #fff;
+}
+
+.price-list {
+    background: rgba(20, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #b30000;
+    box-shadow: 0 0 40px rgba(139,0,0,0.4);
+    backdrop-filter: blur(3px);
+}
+
+.price-list h2 {
+    font-size: 2rem;
+    color: #ff6666;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 0 10px #b30000;
+    letter-spacing: 5px;
+}
+
+.price-category {
+    margin-bottom: 35px;
+    border-bottom: 1px dashed #b30000;
+    padding-bottom: 25px;
+}
+
+.price-category h3 {
+    font-size: 1.6rem;
+    color: #ff9999;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 5px solid #b30000;
+}
+
+.price-category ul {
+    list-style: none;
+}
+
+.price-category li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    background: rgba(50, 0, 0, 0.5);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #ffe0e0;
+    border: 1px solid #4d1a1a;
+}
+
+.price-category li span {
+    color: #ffb3b3;
+    font-weight: bold;
+}
+
+.order {
+    text-align: center;
+    margin-top: 35px;
+    padding: 20px;
+    background: #2d0a0a;
+    border-radius: 15px;
+    border: 2px solid #ff4d4d;
+}
+
+.order p {
+    font-size: 1.3rem;
+}
+
+.order a {
+    color: #ff9999;
+    text-decoration: none;
+    border-bottom: 2px dashed #ff4d4d;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.order a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+@keyframes glitch {
+    2%, 64% { transform: skew(0, 0); }
+    4%, 60% { transform: skew(1deg, 0); }
+    62% { transform: skew(-1deg, 0); }
+}
+
+@keyframes glitch-1 {
+    0% { clip-path: inset(20% 0 30% 0); }
+    20% { clip-path: inset(60% 0 10% 0); }
+    40% { clip-path: inset(30% 0 40% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(40% 0 30% 0); }
+}
+
+@keyframes glitch-2 {
+    0% { clip-path: inset(40% 0 30% 0); }
+    20% { clip-path: inset(10% 0 70% 0); }
+    40% { clip-path: inset(80% 0 5% 0); }
+    60% { clip-path: inset(30% 0 40% 0); }
+    80% { clip-path: inset(60% 0 10% 0); }
+    100% { clip-path: inset(20% 0 30% 0); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.1; }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .glitch {
+        font-size: 2.5rem;
+    }
+    
+    .price-category li {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .buttons {
+        gap: 15px;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
